@@ -1,31 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './main.css';
+import Melania from './images/Melania.jpg';
 
 const Booklist = () => {
     return <section className='booklist'>
         <Book />
         <Book />
         <Book />
+        <Book />
+        <Book />
+        <Book />
     </section>
 }
 
-
+const author = 'Melania Trump';
+const title = 'Melania';
+const img = Melania;
 const Book = () => {
+
     return (
         <article className='book'>
-            <Image />
-            <Title />
-            <Author />
+            <img src={img} alt='Melania' />
+            <h2>{title}</h2>
+            <h4>{author.toUpperCase()}</h4>
+            {/* <p>{let x = 6}</p> */}
         </article>
     );
 };
-
-const Image = () => <img src='https://images-na.ssl-images-amazon.com/images/I/41e+dwz5W5L._AC_UL127_SR127,127_.jpg' alt='Melania' />
-const Title = () => <h2>Melania</h2>
-const Author = () => {
-    return <h4>Melania Trump</h4>
-}
 
 
 /* function Greeting() {
