@@ -3,29 +3,39 @@ import ReactDOM from 'react-dom/client';
 import './main.css';
 import Melania from './images/Melania.jpg';
 
+const firstBook = {
+    author: 'Melania Trump',
+    title: 'Melania',
+    img: Melania
+}
+
+const secondBook = {
+    author: 'Heather Hedway',
+    title: 'My Troubles',
+    img: Melania
+}
+
 const Booklist = () => {
     return <section className='booklist'>
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
+        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
+        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
+        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
+        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
+        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
+        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
     </section>
 }
 
-const author = 'Melania Trump';
-const title = 'Melania';
-const img = Melania;
-const Book = () => {
 
+const Book = (props) => {
     return (
         <article className='book'>
-            <img src={img} alt='Melania' />
-            <h2>{title}</h2>
-            <h4>{author.toUpperCase()}</h4>
+            <img src={props.img} alt={props.title} />
+            <h2>{props.title}</h2>
+            <h4>{props.author.toUpperCase()}</h4>
             {/* <p>{let x = 6}</p> */}
         </article>
+
     );
 };
 
