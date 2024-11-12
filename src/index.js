@@ -3,37 +3,76 @@ import ReactDOM from 'react-dom/client';
 import './main.css';
 import Melania from './images/Melania.jpg';
 
-const firstBook = {
-    author: 'Melania Trump',
-    title: 'Melania',
-    img: Melania
-}
+const books = [
+    {
+        author: 'Melania Trump',
+        title: 'Melania',
+        img: Melania,
+        id: 1
 
-const secondBook = {
-    author: 'Heather Hedway',
-    title: 'My Troubles',
-    img: Melania
-}
+    },
+
+    {
+        author: 'Heather Hedway',
+        title: 'My Troubles',
+        img: Melania,
+        id: 2
+    }
+];
+
+/* const names = [
+    'john', 'peter', 'susan'
+];
+const newNames = names.map((name) => {
+    console.log(name);
+    return <h1>{name}</h1>
+})
+ */
+
+//Root Component
 
 const Booklist = () => {
-    return <section className='booklist'>
-        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
-        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
-        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
-        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
-        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
-        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
-    </section>
-}
+    return (
+        <section className='booklist'>
+            <EventExamples />
+            {books.map((book) => {
 
+                return <Book {...book} key={book.id} />
+            })}
+        </section >
+    );
+};
+
+const EventExamples = () => {
+    const handleFormInput = () => {
+        console.log('handle form input');
+    };
+    const handleButtonClick = () => {
+        alert('handle button click');
+    };
+    return (<section>
+        <form>
+            <h2>Typical Form</h2>
+            <input type='text'
+                name='example'
+                placeholder='example'
+                onChange={handleFormInput}
+                style={{ margin: '1rem 0' }}></input>
+        </form>
+        <button onClick={handleButtonClick}>click me</button>
+    </section>);
+};
+
+//Book Component
 
 const Book = (props) => {
+    const { img, title, author, children } = props;
     return (
         <article className='book'>
-            <img src={props.img} alt={props.title} />
-            <h2>{props.title}</h2>
-            <h4>{props.author.toUpperCase()}</h4>
-            {/* <p>{let x = 6}</p> */}
+            <img src={img} alt={title} />
+            <h2>{title}</h2>
+            <h4>{author.toUpperCase()}</h4>
+            {children}
         </article>
 
     );
